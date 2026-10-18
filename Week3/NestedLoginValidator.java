@@ -6,12 +6,10 @@ public class NestedLoginValidator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // Stored (correct) account details
         String correctUsername = "aira";
         String correctPassword = "java123";
-        boolean accountLocked = false;   // change to true to test the locked path
+        boolean accountLocked = false;  
 
-        // Values typed by the user
         System.out.print("Enter username: ");
         String enteredUsername = input.next();
         System.out.print("Enter password: ");
