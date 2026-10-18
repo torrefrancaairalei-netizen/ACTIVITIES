@@ -1,42 +1,63 @@
 package Week2;
 
+import java.util.Scanner;
+
 public class CompoundGrowthTracker {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // --- Inputs ---
+        System.out.print("Enter initial balance: ");
+        double balance = input.nextDouble();
+        System.out.print("Enter deposit amount: ");
+        double deposit = input.nextDouble();
+        System.out.print("Enter interest rate (%): ");
+        double ratePercent = input.nextDouble();
+        System.out.print("Enter starting count: ");
+        int startCount = input.nextInt();
+
+        double growth = 1 + ratePercent / 100;
+
         // --- Part 1: compound assignment operators (+= and *=) ---
-        double balance = 1000.00;
+        System.out.println();
+        System.out.println("=== Balance Growth ===");
         System.out.printf("Starting balance : %.2f%n", balance);
 
-        balance += 500;      // deposit of 500
-        System.out.printf("After += 500     : %.2f%n", balance);
+        balance += deposit;      // deposit
+        System.out.printf("After += deposit : %.2f%n", balance);
 
-        balance *= 1.05;     // 5% interest
-        System.out.printf("After *= 1.05    : %.2f%n", balance);
+        balance *= growth;       // interest
+        System.out.printf("After *= growth  : %.2f%n", balance);
 
-        balance += 250;      // deposit of 250
-        System.out.printf("After += 250     : %.2f%n", balance);
+        balance += deposit;      // another deposit
+        System.out.printf("After += deposit : %.2f%n", balance);
 
-        balance *= 1.10;     // 10% interest
-        System.out.printf("After *= 1.10    : %.2f%n", balance);
+        balance *= growth;       // interest again
+        System.out.printf("After *= growth  : %.2f%n", balance);
 
         // --- Part 2: postfix increment (count++) ---
-        int count = 5;
+        System.out.println();
+        System.out.println("=== Increment Test ===");
+        int count = startCount;
         System.out.println("count++ prints   : " + count++);
         System.out.println("count now        : " + count);
 
         // --- Part 3: prefix increment (++count) ---
-        count = 5;
+        count = startCount;
         System.out.println("++count prints   : " + ++count);
         System.out.println("count now        : " + count);
 
         // Why the two printed values differ:
-        // With count++ (postfix), Java first uses the old value of count (5)
-        // in the println, and only after that adds 1. So it prints 5, and
-        // printing count again right after shows 6.
-        // With ++count (prefix), Java adds 1 to count first (5 becomes 6) and
-        // then uses the new value in the println. So it prints 6, and
-        // printing count again right after still shows 6.
+        // With count++ (postfix), Java first uses the old value of count
+        // in the println, and only after that adds 1. So it prints the
+        // starting value, and printing count again right after shows the
+        // increased value.
+        // With ++count (prefix), Java adds 1 to count first and then uses
+        // the new value in the println. So it prints the increased value
+        // immediately, and printing count again right after shows the same value.
         // In short: postfix = use first, then increase; prefix = increase
         // first, then use.
+
+        input.close();
     }
 }
-
