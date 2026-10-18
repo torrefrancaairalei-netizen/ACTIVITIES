@@ -1,12 +1,16 @@
+import java.util.Scanner;
+
 public class UnitCastingConverter {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         // --- Part 1: centimeters -> whole meters + remaining centimeters ---
-        double centimeters = 275.5;
+        System.out.print("Enter centimeters: ");
+        double centimeters = input.nextDouble();
         int wholeMeters = (int) (centimeters / 100);              // explicit cast
         double remainingCm = centimeters - (wholeMeters * 100);
 
-        System.out.println(centimeters + " cm = " + wholeMeters
-                + " m and " + remainingCm + " cm");
+        System.out.printf("%.2f cm = %d m and %.2f cm%n", centimeters, wholeMeters, remainingCm);
 
         // --- Part 2: implicit widening (int -> double) ---
         int wholeNumber = 42;
@@ -21,6 +25,8 @@ public class UnitCastingConverter {
         // part (.99) is thrown away (truncated, NOT rounded), so 9.99 becomes 9.
         int narrowed = (int) price;
         System.out.println("Narrowing: double " + price + " -> int " + narrowed);
+        System.out.printf("Data lost: %.2f", price - narrowed);
+
+        input.close();
     }
 }
-
