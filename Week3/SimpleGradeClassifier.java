@@ -1,10 +1,13 @@
 package Week3;
 
+import java.util.Scanner;
+
 public class SimpleGradeClassifier {
     public static void main(String[] args) {
-        int score = 80;  
+        Scanner input = new Scanner(System.in);
 
-        System.out.println("Score: " + score);
+        System.out.print("Enter score: ");
+        int score = input.nextInt();
 
         if (score >= 60) {
             System.out.println("PASSED");
@@ -12,6 +15,7 @@ public class SimpleGradeClassifier {
             System.out.println("FAILED");
         }
 
+        input.close();
     }
 }
 
