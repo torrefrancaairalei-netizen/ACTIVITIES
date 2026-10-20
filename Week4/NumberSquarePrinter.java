@@ -5,6 +5,7 @@ public class NumberSquarePrinter {
         int limit = 10;  
 
         for (int i = 1; i <= limit; i++) {
+         
             System.out.println("Number: " + i + " | Square: " + (i * i));
         }
     }
